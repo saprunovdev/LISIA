@@ -1,0 +1,29 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<!-- professor -->
+
+
+<div class="row">
+    <div class="container px-4 py-5" id="hanging-icons">
+        <h2 class="pb-2 border-bottom">Professor</h2>
+            <div class="card mb-3" style="max-width: 540px;">
+                {% for prof in page.professor.all %}
+                    {% image prof.professor.image fill-230x300 as img %}
+
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ img.url }}" class="img-fluid rounded-start" alt="...">
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"> {{ prof.professor.name }}</h5>
+                                <p class="card-text">{{ prof.professor.email }}</p>
+                                <p class="card-text">{{ prof.professor.affiliation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </div>
+</div>

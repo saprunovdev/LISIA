@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<!-- Members -->
+<div class="row">
+    <div class="container px-4 py-5" id="hanging-icons">
+        <h2 class="pb-2 border-bottom">Members</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                
+            </div>
+                {% for iter in page.members_list.all %}
+                    {{ iter.members_list.name }}
+                {% endfor %}
+        </div>
+</div>

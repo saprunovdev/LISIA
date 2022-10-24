@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for phd in phds %}
+
+{% image phd.image fill-230x300 as img %}
+
+    <div class="card mb-3" style="width: 13rem;">
+        <img src="{{ img.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <b class="card-text">{{ phd.name }}</b>
+        <p class="card-text">{{ phd.get_rank_display }}, {{ phd.get_status_display }}</p>
+        <p class="card-text">{{ phd.email }}</p>
+        </div>
+    </div>
+
+{% endfor %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    
+    {% include 'home/hero_section.html' %}
+
+    {% include 'home/about_us_section.html' %}
+
+    {% include 'home/publications_section.html' %}
+
+    {% include 'home/professor_section.html' %}
+    
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for undergraduate in undergraduates %}
+
+{% image undergraduate.image fill-230x300 as img %}
+
+    <div class="card mb-3" style="width: 13rem;">
+        <img src="{{ img.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <b class="card-text">{{ undergraduate.name }}</b>
+        <p class="card-text">{{ undergraduate.get_rank_display }}, {{ undergraduate.get_status_display }}</p>
+        <p class="card-text">{{ undergraduate.email }}</p>
+        </div>
+    </div>
+
+{% endfor %}
