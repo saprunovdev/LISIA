@@ -1,0 +1,15 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for inter in international %}
+<div class="card">
+    <div class="card-header">
+        {{inter.authors}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{inter.title}}</p>
+        <footer class="blockquote-footer">{{inter.published_where}}, {{inter.publication_date}}</footer>
+      </blockquote>
+    </div>
+  </div>
+{% endfor %}

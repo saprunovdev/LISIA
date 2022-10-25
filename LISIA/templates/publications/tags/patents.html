@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for patent in patents %}
+<div class="card">
+    <div class="card-header">
+        {{patent.authors}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{patent.title}}</p>
+        <footer class="blockquote-footer">{{patent.published_where}} , {{patent.publication_date}}</footer>
+      </blockquote>
+    </div>
+  </div>
+{% endfor %}
+
