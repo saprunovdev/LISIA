@@ -1,9 +1,10 @@
 from email.policy import default
 from django.db import models
 
-from wagtail.models import Page
+from wagtail.models import Page, Orderable
 from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
+from modelcluster.fields import ParentalKey
 
 @register_snippet
 class Publication(models.Model):
@@ -37,3 +38,28 @@ class Publication(models.Model):
 class PublicationsPage(Page):
     max_count = 1
     template = "publications/publications_page.html"
+
+
+class PublicationsToHomePage(Orderable, models.Model):
+    page = ParentalKey(
+        'home.HomePage',
+        on_delete = models.CASCADE,
+        related_name = 'publication',
+    )
+
+    publication = models.ForeignKey(
+        'publications.Publication',
+        on_delete = models.CASCADE,
+        related_name = '+',
+    )
+
+    class Meta(Orderable.Meta):
+        verbose_name = "Publication"
+        verbose_name_plural = "Publications"
+
+    panels = [
+        FieldPanel('publication')
+    ]
+
+    def __str__(self):
+        return self.page.title + " -> " + self.members.name

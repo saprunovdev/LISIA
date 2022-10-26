@@ -24,4 +24,5 @@ class HomePage(Page):
         FieldPanel('hero_image'),
         InlinePanel('members_list', label = 'members'),
         InlinePanel('professor', label = 'professor'),
+        InlinePanel('publication', label = 'publications'),
     ]
