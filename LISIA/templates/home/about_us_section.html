@@ -1,3 +1,8 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<!-- Hero section -->
+
+{% image self.about_us_image fill-900x600 as about_img %}
 <div class="container pt-5">
   <div class="border-bottom">
     <h2>About us</h2>
@@ -6,13 +11,15 @@
   <div class="d-flex flex-xl-row flex-column gap-lg-5 gap-5 align-items-center pt-3">
 
     <div class="col">
-      <img src="/images/photo-2.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      <img src="{{ about_img.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
     </div>
 
     <div class="col">
       <div class="d-flex flex-column gap-3 align-middle">
 
-        <div>
+        {{ self.about_us_text|richtext }}
+
+        {% comment %} <div>
           <h4 class="fs-4">Applied Cryptography</h4>
           <p>LISIA has been studying cryptography schemes, protocols and applications based on understandings of cryptography theories and practices.</p>
         </div>
@@ -20,7 +27,7 @@
         <div>
           <h4 class="fs-4">Service-Oriented Security Mechanisms</h4>
           <p>Based on practical cryptographic techniques, in recent, LISIA is also focusing on developing application-level security mechanisms in IT-convergence service areas. For instance, we are aiming at security mechanisms for vehicular cloud environments in recent, widely including Internet of Things (IoT).</p>
-        </div>
+        </div> {% endcomment %}
 
       </div>
     </div>

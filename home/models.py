@@ -1,6 +1,8 @@
 from django.db import models
 
 from wagtail.models import Page
+from wagtail.fields import RichTextField
+
 from wagtail.admin.panels import FieldPanel, InlinePanel
 
 class HomePage(Page):
@@ -17,12 +19,26 @@ class HomePage(Page):
         related_name = "+"
     )
 
+    about_us_text = RichTextField(default = "", features=[
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'link', 'hr'
+        ])
+
+    about_us_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null = True,
+        blank = True,
+        on_delete = models.SET_NULL,
+        related_name = "+"
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('hero_title'),
         FieldPanel('hero_body'),
         FieldPanel('hero_image'),
-        InlinePanel('members_list', label = 'members'),
-        InlinePanel('professor', label = 'professor'),
+        FieldPanel('about_us_text'),
+        FieldPanel('about_us_image'),
+        
         InlinePanel('publication', label = 'publications'),
+        InlinePanel('professor', label = 'professor'),
+        InlinePanel('members_list', label = 'members'),     
     ]
