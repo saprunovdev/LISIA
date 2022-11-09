@@ -1,15 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% for inter in international %}
-<div class="card my-3">
-    <div class="card-header">
-        {{inter.authors}}
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <p>{{inter.title}}</p>
-        <footer class="blockquote-footer">{{inter.published_where}}, {{inter.publication_date}}</footer>
-      </blockquote>
-    </div>
-  </div>
+
+<div class="publication mt-4" data-status="international">
+  <h3 class="fs-5" id="publication-title">{{inter.title}}</h3>
+  <p id="publication-author">{{inter.authors}}</p>
+  <p id="publication-where-when">{{inter.published_where}}, {{inter.publication_date}}</p>
+  <hr/>
+</div>
 {% endfor %}

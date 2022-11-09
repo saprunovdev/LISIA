@@ -1,18 +1,24 @@
     <!-- Publications -->
-    <div class="row">
-        <div class="container px-4 py-5" id="hanging-icons">
-            <h2 class="pb-2 border-bottom">Publications</h2>
-            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-                {% for pub in page.publication.all %}
-                    <div class="col d-flex align-items-start">
-                        <div>
-                        <h3 class="fs-5">{{ pub.publication.authors }}</h3>
-                        <p>{{ pub.publication.title }}</p>
-                        <p>{{ pub.publication.published_where }}, {{pub.publication.publication_date}}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-    
-            </div>
+    <div class="container pt-5">
+
+        <div class="d-flex align-items-center justify-content-between border-bottom">
+          <h2>Publications</h2>
+          <a href="/publications.html" class="d-flex gap-2 align-items-center text-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+            <u>See All Publications</u>
+          </a>
         </div>
-    </div>
+
+          <div class="d-flex flex-md-row flex-column pt-4 gap-4">
+            {% for pub in page.publication.all %}
+                <div>
+                <h3 class="fs-5" id="publication-title">{{ pub.publication.title }}</h3>
+                <p id="publication-author">{{ pub.publication.authors }}</p>
+                <p id="publication-where-when">{{ pub.publication.published_where }}, {{pub.publication.publication_date}}</p>
+                </div>
+            {% endfor %}
+          </div>
+          
+      </div>

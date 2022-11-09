@@ -2,15 +2,19 @@
 
 {% for undergraduate in undergraduates %}
 
-{% image undergraduate.image fill-230x300 as img %}
+{% image undergraduate.image fill-200x280 as img %}
 
-    <div class="card mb-3" style="width: 13rem;">
-        <img src="{{ img.url }}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <b class="card-text">{{ undergraduate.name }}</b>
-        <p class="card-text">{{ undergraduate.get_rank_display }}, {{ undergraduate.get_status_display }}</p>
-        <p class="card-text">{{ undergraduate.email }}</p>
+<div class="mt-4">
+    <div class="card bg-dark text-white" style="max-width: 200px;">
+        <img src="{{ img.url }}" class="card-img" alt="...">
+        
+        <div class="bg-dark bg-opacity-50 rounded-bottom position-absolute bottom-0 w-100 h-35 px-2 py-2">
+        
+            <h5 class="card-title">{{ undergraduate.name }}</h5>
+            <p class="card-text mb-2">{{ undergraduate.email }}</p>
+            <p class="card-text d-none d-md-block">{{ undergraduate.get_rank_display }}, {{ undergraduate.get_status_display }}</p>
         </div>
     </div>
+</div>
 
 {% endfor %}

@@ -2,15 +2,17 @@
 
 {% for master in masters %}
 
-{% image master.image fill-230x300 as img %}
-
-    <div class="card mb-3" style="width: 13rem;">
-        <img src="{{ img.url }}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <b class="card-text">{{ master.name }}</b>
-        <p class="card-text">{{ master.get_rank_display }}, {{ master.get_status_display }}</p>
-        <p class="card-text">{{ master.email }}</p>
+{% image master.image fill-200x280 as img %}
+<div class="mt-4">
+    <div class="card bg-dark text-white" style="max-width: 200px;">
+        <img src="{{ img.url }}" class="card-img" alt="...">
+        
+        <div class="bg-dark bg-opacity-50 rounded-bottom position-absolute bottom-0 w-100 h-35 px-2 py-2">
+        
+            <h5 class="card-title">{{ master.name }}</h5>
+            <p class="card-text mb-2">{{ master.email }}</p>
+            <p class="card-text d-none d-md-block">{{ master.get_rank_display }}, {{ master.get_status_display }}</p>
         </div>
     </div>
-
+</div>
 {% endfor %}

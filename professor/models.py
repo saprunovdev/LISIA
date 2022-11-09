@@ -12,6 +12,7 @@ class Professor(models.Model):
     name = models.CharField(max_length = 20, blank=True)
     email = models.EmailField(max_length = 40, blank=True)
     affiliation = models.CharField(max_length = 300, blank=True)
+    address = models.CharField(max_length = 300, blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete = models.SET_NULL,
@@ -25,6 +26,7 @@ class Professor(models.Model):
         FieldPanel('email'),
         FieldPanel('affiliation'),
         FieldPanel('image'),
+        FieldPanel('address'),
     ]
 
     def __str__(self):
@@ -38,9 +40,15 @@ class ProfessorsPage(Page):
     max_count = 1
     template = "professor/professors_page.html"
 
-    professor_personal = RichTextField(default = "")
-    professor_experience = RichTextField(default = "")
-    professor_professional = RichTextField(default = "")
+    professor_personal = RichTextField(default = "", features=[
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'link', 'hr'
+        ])
+    professor_experience = RichTextField(default = "", features=[
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'link', 'hr'
+        ])
+    professor_professional = RichTextField(default = "", features=[
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'link', 'hr'
+        ])
 
     content_panels = Page.content_panels + [
         InlinePanel('professor', label = 'professor'),
