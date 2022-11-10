@@ -32,3 +32,4 @@ in the terminal go to the lisia folder and run
  
 python manage.py runserver
 
+add to do list here
