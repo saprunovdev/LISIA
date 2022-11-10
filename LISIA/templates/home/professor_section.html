@@ -4,7 +4,7 @@
 
     <div class="d-flex align-items-center justify-content-between border-bottom">
       <h2>Professor</h2>
-      <a href="/professor.html" class="d-flex gap-2 align-items-center text-muted">
+      <a href="professor/" class="d-flex gap-2 align-items-center text-muted">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
         </svg>
@@ -12,18 +12,25 @@
       </a>
     </div>
 
-    <div class="row pt-4">
+    <div class="d-flex flex-xl-row flex-md-row flex-column gap-lg-5 gap-5 align-items-center pt-3">
       {% for prof in page.professor.all %}
-        {% image prof.professor.image fill-230x300 as img %}
-            <div class="col-4 col-md-2">
-                <img src="{{ img.url }}" class="img-fluid rounded" alt="...">
+
+        {% image prof.professor.image fill-225x300 as img %}
+
+            <div class="col-lg-auto col-md-4 col-sm-auto">
+              <div class="card" style="min-width:225px; max-width: 225px; border:none">
+                <img src="{{ img.url }}" class="card-img rounded" alt="...">
+              </div>
             </div>
 
-            <div class="col-8 col-md-10 gap-4">
+            <div class="col-lg-8 col-md-7 col-sm-auto gap-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{ prof.professor.name }}</h5>
-                    <p class="card-text">{{ prof.professor.affiliation }}</p>
-                    <p class="card-text">{{ prof.professor.email }}</p>
+                    <h5 class="card-title my-3">{{ prof.professor.name }}</h5>
+                   <p class="card-text"> <b>Affiliation: </b> {{ prof.professor.affiliation }}</p>
+                    <p class="card-text"><b>Email: </b> {{ prof.professor.email }}</p>
+                    <p class="card-text"><b>Address: </b> {{ prof.professor.address }}</p>
+                    <p class="card-text"><b>Tel: </b> {{ prof.professor.phone }}</p>
+                    <p class="card-text"><b>Fax: </b> {{ prof.professor.fax }}</p>
                 </div>
         {% endfor %}
         </div>

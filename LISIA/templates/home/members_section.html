@@ -4,7 +4,7 @@
 
     <div class="d-flex align-items-center justify-content-between border-bottom">
       <h2>Members</h2>
-      <a href="/members.html" class="d-flex gap-2 align-items-center text-muted">
+      <a href="members/" class="d-flex gap-2 align-items-center text-muted">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
         </svg>
@@ -12,17 +12,15 @@
       </a>
     </div>
 
-    <div class="d-flex flex-row justify-content-between mt-5">
+    <div class="d-flex flex-xl-row flex-column gap-lg-5 gap-5 align-items-center mt-5">
 
         {% for iter in page.members_list.all %}
                     
-        {% image iter.members_list.image fill-230x300 as img %}
+        {% image iter.members_list.image fill-225x300 as img %}
 
-            <div class="card bg-dark text-white" style="min-width:100px; max-width: 300px">
+            <div class="col-lg-auto col-md-auto col-sm-auto card bg-dark text-white" style="border:none">
                 <img src="{{ img.url }}" class="card-img" alt="..." >
-                
-                <div class="bg-dark bg-opacity-50 position-absolute bottom-0 w-100 h-35 px-2 py-2">
-                
+                <div class="bg-dark bg-opacity-50 position-absolute rounded-bottom bottom-0 w-100 h-35 px-2 py-2">
                 <h5 class="card-title">{{ iter.members_list.name }}</h5>
                 <p class="card-text">{{ iter.members_list.email }}</p>
                 <p class="card-text d-none d-md-block">{{ iter.members_list.get_rank_display }}, {{iter.members_list.get_status_display}}</p>

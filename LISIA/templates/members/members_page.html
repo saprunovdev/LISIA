@@ -5,17 +5,17 @@
 
 <div class = "container px-4 py-5">
     <h2 class="mb-3">{{ page.title }}</h2> 
-<div class="d-flex flex-xl-row flex-column gap-lg-5 gap-5">
+<div class="d-flex flex-xl-row flex-lg-row flex-md-row flex-column gap-lg-5 gap-5 align-items-start justify-content-around mt-5">
 
-    <div class="col card-columns pt-3">
+    <div class="col mx-auto pt-3">
         <h4>Ph.D</h4>
         {% phds %}
     </div>
-    <div class="col card-columns pt-3">
+    <div class="col mx-auto pt-3">
         <h4>Master</h4>
             {% masters %}
     </div>
-    <div class="col card-columns pt-3">
+    <div class="col mx-auto pt-3">
         <h4>Undergraduate</h4>
         {% undergraduates %}
     </div>

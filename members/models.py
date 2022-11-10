@@ -4,6 +4,7 @@ from wagtail.models import Page, Orderable
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from modelcluster.fields import ParentalKey
 from wagtail.snippets.models import register_snippet
+from professor.models import Professor
 
 @register_snippet
 class Member(models.Model):
@@ -53,6 +54,13 @@ class MembersPage(Page):
     content_panels = Page.content_panels + [
         InlinePanel('members_list', label = 'members'),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        # Add extra variables and return the updated context
+        context['professor'] = Professor.objects.all()
+        return context
 
     
 

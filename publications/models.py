@@ -5,7 +5,7 @@ from wagtail.models import Page, Orderable
 from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
 from modelcluster.fields import ParentalKey
-
+from professor.models import Professor
 @register_snippet
 class Publication(models.Model):
     CATEGORY = (
@@ -38,6 +38,13 @@ class Publication(models.Model):
 class PublicationsPage(Page):
     max_count = 1
     template = "publications/publications_page.html"
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        # Add extra variables and return the updated context
+        context['professor'] = Professor.objects.all()
+        return context
 
 
 class PublicationsToHomePage(Orderable, models.Model):

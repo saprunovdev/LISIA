@@ -1,6 +1,7 @@
 from email.policy import default
 from django.db import models
 
+from phonenumber_field.modelfields import PhoneNumberField
 from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, InlinePanel
@@ -13,6 +14,8 @@ class Professor(models.Model):
     email = models.EmailField(max_length = 40, blank=True)
     affiliation = models.CharField(max_length = 300, blank=True)
     address = models.CharField(max_length = 300, blank=True)
+    phone = PhoneNumberField(null=False, blank=True, unique=True)
+    fax = PhoneNumberField(null=False, blank=True, unique=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete = models.SET_NULL,
@@ -22,10 +25,12 @@ class Professor(models.Model):
     )
 
     panels = [
-        FieldPanel('name'),
-        FieldPanel('email'),
-        FieldPanel('affiliation'),
         FieldPanel('image'),
+        FieldPanel('name'),
+        FieldPanel('affiliation'),
+        FieldPanel('email'),
+        FieldPanel('phone'),
+        FieldPanel('fax'),
         FieldPanel('address'),
     ]
 

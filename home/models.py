@@ -38,7 +38,7 @@ class HomePage(Page):
         FieldPanel('about_us_text'),
         FieldPanel('about_us_image'),
         
-        InlinePanel('publication', label = 'publications'),
-        InlinePanel('professor', label = 'professor'),
-        InlinePanel('members_list', label = 'members'),     
+        InlinePanel('publication', label = 'publication', max_num=3),
+        InlinePanel('professor', label = 'professor', max_num=1),
+        InlinePanel('members_list', label = 'member', max_num=4),     
     ]
